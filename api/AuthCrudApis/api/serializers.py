@@ -8,4 +8,5 @@ class UserLoginSerializer(serializers.Serializer):
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ['title', 'content']
+        model = Post
+        fields = ['pk', 'title', 'content']
