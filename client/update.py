@@ -1,6 +1,6 @@
 import requests
 
-endpoint = 'http://127.0.0.1:8000/api/post/1/update/'
+endpoint = 'http://127.0.0.1:8000/api/post/3/update/'
 title = input('Enter updated title: ')
 content = input('Enter updated content: ')
 
