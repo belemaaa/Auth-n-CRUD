@@ -10,3 +10,6 @@ response = requests.post(endpoint, json={
 })
 
 print(response.json())
+token = response.json()['token']
+with open('token.txt', 'w') as token_file:
+    token_file.write(token)
