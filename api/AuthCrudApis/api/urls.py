@@ -7,4 +7,5 @@ urlpatterns = [
     path('post/', views.PostView.as_view()),
     path('post/<int:pk>/', views.PostView.as_view()),
     path('post/<int:pk>/update/', views.PostView.as_view()),
+    path('post/<int:pk>/delete/', views.PostView.as_view()),
 ]
