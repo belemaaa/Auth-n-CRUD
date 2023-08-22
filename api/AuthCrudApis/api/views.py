@@ -47,7 +47,7 @@ class PostView(APIView):
             content = serializer.validated_data.get('content') or None
             if content is None:
                 content = title
-            serializer.save(content=content)
+            serializer.save(user=self.request.user, content=content)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)   
     
