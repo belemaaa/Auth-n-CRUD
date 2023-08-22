@@ -68,6 +68,14 @@ class PostView(APIView):
 
         return Response({'message': 'Resource deleted successfully'}, status=204)
     
+class GetUserPosts(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    lookup_field = 'pk'
+    def get(self, request, *args, **kwargs):
+        queryset = Post.objects.filter(user=request.user)
+        data = PostSerializer(queryset, many=True).data
+        return Response(data)
 
 
 
