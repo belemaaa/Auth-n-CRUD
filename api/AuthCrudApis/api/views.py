@@ -76,6 +76,7 @@ class GetUserPosts(APIView):
         queryset = Post.objects.filter(user=request.user)
         data = PostSerializer(queryset, many=True).data
         return Response({
+            "id": request.user.id,
             "username": request.user.username,
             "posts": data
         })
