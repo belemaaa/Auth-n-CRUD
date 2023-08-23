@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from .authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .models import User
 
 
 # Create your views here.
@@ -71,11 +72,11 @@ class PostView(APIView):
 class GetUserPosts(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
-    lookup_field = 'pk'
     def get(self, request, *args, **kwargs):
         queryset = Post.objects.filter(user=request.user)
         data = PostSerializer(queryset, many=True).data
-        return Response(data)
-
-
+        return Response({
+            "username": request.user.username,
+            "posts": data
+        })
 
