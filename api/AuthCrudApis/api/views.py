@@ -13,8 +13,6 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import User
 
 
-# Create your views here.
-
 class LoginView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data)
